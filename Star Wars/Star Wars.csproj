@@ -225,6 +225,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\CharactersController.cs" />
+    <Compile Include="Controllers\EpisodesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -317,6 +319,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Star Wars.DAL\Star Wars.DAL.csproj">
+      <Project>{AE059977-4CD0-4B7A-9CCF-D1FB9A73E2F5}</Project>
+      <Name>Star Wars.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Star Wars.Model\Star Wars.Model.csproj">
       <Project>{8CA5385C-BDA3-4C8C-ABB6-E5D43A9EC687}</Project>
       <Name>Star Wars.Model</Name>
