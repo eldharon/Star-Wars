@@ -17,7 +17,7 @@ namespace Star_Wars.Model
         [Key]
         [Required]
         public int EpisodeId { get; set; }
-        [Required(ErrorMessage ="Please fill the name property")]
+        [Required(ErrorMessage ="Please fill in the name")]
         public string Name { get; set; }
         public ICollection<Character> Characters { get; set; }
 
