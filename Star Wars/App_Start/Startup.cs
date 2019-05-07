@@ -5,10 +5,9 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Autofac;
-using Autofac.Integration.Mvc;
 using Microsoft.Owin;
 using Owin;
+using Star_Wars.DAL;
 using Star_Wars.Model;
 using Star_Wars.Repository;
 using Star_Wars.Service;
@@ -31,21 +30,37 @@ namespace Star_Wars.App_Start
 
         private void ConfigureContainer()
         {
-            var builder = new ContainerBuilder();
-
+            //var container = new UnityContainer();
             //automatyczna rejestracja wszystkich kontrolerów
-            builder.RegisterControllers(Assembly.GetExecutingAssembly());
-            builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
-
-            builder.RegisterType<Repository<Character>>().As<IRepository<Character>>();
-            builder.RegisterType<Repository<Episode>>().As<IRepository<Episode>>();
+            //container.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            //container.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
 
 
-            builder.RegisterType<Service<Character>>().As<IService<Character>>();
-            builder.RegisterType<Service<Episode>>().As<IService<Episode>>();
+            //container.RegisterType<IRepository<Character>, Repository<Character>>();
+            //container.RegisterType<IRepository<Episode>, Repository<Episode>>();
 
-            var container = builder.Build();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            //container.RegisterType<IService<Character>, Service<Character>>();
+            //container.RegisterType<IService<Episode>, Service<Episode>>();
+
+            //GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(container);
+
+            //var container = builder.Build();
+            //DependencyResolver.SetResolver(new AutofacWebApiDependencyResolver(container));
+
+            //var builder = new ContainerBuilder();
+
+            // Get your HttpConfiguration.
+            //var config = GlobalConfiguration.Configuration;
+
+            //// OPTIONAL: Register the Autofac filter provider.
+            //builder.RegisterWebApiFilterProvider(config);
+
+            //// OPTIONAL: Register the Autofac model binder provider.
+            //builder.RegisterWebApiModelBinderProvider();
+
+            //// Set the dependency resolver to be Autofac.
+            //var container = builder.Build();
         }
     }
 }

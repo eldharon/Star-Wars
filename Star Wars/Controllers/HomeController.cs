@@ -10,6 +10,7 @@ namespace Star_Wars.Controllers
     {
         public ActionResult Index()
         {
+            //REDIRECT TO SWAGGER??
             ViewBag.Title = "Home Page";
 
             return View();
