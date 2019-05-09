@@ -25,13 +25,17 @@ namespace Star_Wars.App_Start
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             WebApiConfig.Register(GlobalConfiguration.Configuration);
+
+            //Dependency Injection
             ConfigureContainer();
         }
 
         private void ConfigureContainer()
         {
+            //Failed attempt to implement Dependency Injection
+
+
             //var container = new UnityContainer();
-            //automatyczna rejestracja wszystkich kontrolerów
             //container.RegisterApiControllers(Assembly.GetExecutingAssembly());
             //container.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
 

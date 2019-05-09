@@ -59,8 +59,11 @@ namespace Star_Wars.Controllers
             return new HttpRequestMessage().CreateResponse(HttpStatusCode.OK, character);
         }
 
-        // POST: api/Characters
-        // CREATE in CRUD
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="character"></param>
+        /// <returns></returns>
         public async Task<HttpResponseMessage> Post([FromBody]Character character)
         {
             //Validate parsed character

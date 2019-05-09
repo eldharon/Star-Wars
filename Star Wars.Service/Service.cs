@@ -10,6 +10,7 @@ namespace Star_Wars.Service
 {
     public class Service<T> : IService<T> where T : class
     {
+        //Obsolete due to the fact, that Dependency injection is not implemented properly
         private readonly IRepository<T> _repository;
 
         public Service(IRepository<T> repository)
