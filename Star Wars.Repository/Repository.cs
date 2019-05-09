@@ -13,8 +13,11 @@ namespace Star_Wars.Repository
     {
 
         //tworzy obiekt contextu odpowiedzialnego za łączność z bazą
-        private readonly StarWarsContext _db = new StarWarsContext();
-
+        private readonly StarWarsContext _db;
+        public Repository(StarWarsContext db)
+        {
+            _db = db;
+        }
         //zwraca całą kolekcję w postaci listy
         public async Task<ICollection<T>> GetAllAsync()
         {

@@ -12,6 +12,7 @@ using Star_Wars.Model;
 using Star_Wars.Repository;
 using Star_Wars.Service;
 
+
 [assembly: OwinStartup(typeof(Star_Wars.App_Start.Startup))]
 
 namespace Star_Wars.App_Start
@@ -26,45 +27,8 @@ namespace Star_Wars.App_Start
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             WebApiConfig.Register(GlobalConfiguration.Configuration);
 
-            //Dependency Injection
-            ConfigureContainer();
-        }
-
-        private void ConfigureContainer()
-        {
-            //Failed attempt to implement Dependency Injection
-
-
-            //var container = new UnityContainer();
-            //container.RegisterApiControllers(Assembly.GetExecutingAssembly());
-            //container.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
-
-
-            //container.RegisterType<IRepository<Character>, Repository<Character>>();
-            //container.RegisterType<IRepository<Episode>, Repository<Episode>>();
-
-
-            //container.RegisterType<IService<Character>, Service<Character>>();
-            //container.RegisterType<IService<Episode>, Service<Episode>>();
-
-            //GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(container);
-
-            //var container = builder.Build();
-            //DependencyResolver.SetResolver(new AutofacWebApiDependencyResolver(container));
-
-            //var builder = new ContainerBuilder();
-
-            // Get your HttpConfiguration.
-            //var config = GlobalConfiguration.Configuration;
-
-            //// OPTIONAL: Register the Autofac filter provider.
-            //builder.RegisterWebApiFilterProvider(config);
-
-            //// OPTIONAL: Register the Autofac model binder provider.
-            //builder.RegisterWebApiModelBinderProvider();
-
-            //// Set the dependency resolver to be Autofac.
-            //var container = builder.Build();
-        }
+            //Instance of Dependency Injection
+            StructuremapWebApi.Start();
+        }       
     }
 }

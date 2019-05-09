@@ -18,15 +18,15 @@ namespace Star_Wars.Controllers
     {
 
         //Calling the Service layer
-        //private IService<Character> _character;
+        private IService<Character> _character;
         //nieudana próba DI        
-        private Repository<Character> _character = new Repository<Character>();
+        //private Repository<Character> _character = new Repository<Character>();
         //implement data init? probably not a good place to do it
         //Initialize using a ctor
-        //public CharactersController(IService<Character> character)
-        //{
-        //    _character = character;
-        //}
+        public CharactersController(IService<Character> character)
+        {
+            _character = character;
+        }
 
         // READ in CRUD
         public async Task<IEnumerable<Character>> Get()
