@@ -74,7 +74,7 @@ namespace Star_Wars.Controllers
             }
             //If this line of code is reached, the validation went sideways
             //Throw the custom validation error TODO
-            return new HttpRequestMessage().CreateResponse(HttpStatusCode.BadRequest);
+            return new HttpRequestMessage().CreateResponse(HttpStatusCode.InternalServerError);
         }
 
         // PUT: api/Characters/5
