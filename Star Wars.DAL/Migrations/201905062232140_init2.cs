@@ -3,7 +3,7 @@ namespace Star_Wars.DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class init2 : DbMigration
     {
         public override void Up()
         {

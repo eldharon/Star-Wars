@@ -13,8 +13,11 @@ namespace Star_Wars.Repository
     {
 
         //tworzy obiekt contextu odpowiedzialnego za łączność z bazą
-        private readonly StarWarsContext _db = new StarWarsContext();
-
+        private readonly StarWarsContext _db;
+        public Repository(StarWarsContext db)
+        {
+            _db = db;
+        }
         //zwraca całą kolekcję w postaci listy
         public async Task<ICollection<T>> GetAllAsync()
         {
@@ -68,15 +71,12 @@ namespace Star_Wars.Repository
         public async Task<T> UpdateAsync(T updated, int key)
         {
             if (updated == null)
-                throw new ArgumentNullException(nameof(updated));
-            //sprawdzenie czy podany obiekt na pewno istnieje w bazie
-            T existing = await _db.Set<T>().FindAsync(key);
-            if (existing != null)
             {
-                _db.Entry(existing).CurrentValues.SetValues(updated);
-                await _db.SaveChangesAsync();
+                throw new ArgumentNullException(nameof(updated));
             }
-            return existing;
+            _db.Entry(updated).State = EntityState.Modified;
+            await _db.SaveChangesAsync();
+            return updated;
         }
 
         public void Dispose()

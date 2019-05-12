@@ -13,6 +13,12 @@ namespace Star_Wars
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    name: "Swagger",
+            //    url: "{swagger}",
+            //    defaults: new { swagger = "swagger" }
+            //);
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

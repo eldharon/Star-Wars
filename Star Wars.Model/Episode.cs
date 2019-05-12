@@ -13,9 +13,6 @@ namespace Star_Wars.Model
         {
             Characters = new HashSet<Character>();
         }
-
-        [Key]
-        [Required]
         public int EpisodeId { get; set; }
         [Required(ErrorMessage ="Please fill in the name")]
         public string Name { get; set; }

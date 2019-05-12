@@ -11,7 +11,7 @@ namespace Star_Wars.DAL
 {
     public class StarWarsContext : DbContext
     {
-        public StarWarsContext() : base("StarWarsDb")
+        public StarWarsContext() : base("StarWars_DB")
         {
 
         }

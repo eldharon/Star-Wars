@@ -14,8 +14,6 @@ namespace Star_Wars.Model
         {
             Episodes = new HashSet<Episode>();
         }
-        [Key]
-        [Required]
         public int CharacterId { get; set; }
         [Required(ErrorMessage = "Please fill in the name")]
         public string Name { get; set; }
@@ -24,7 +22,7 @@ namespace Star_Wars.Model
         
         public int? FriendId { get; set; }
         [ForeignKey("FriendId")]
-        public List<Character> Friends { get; set; }
+        public ICollection<Character> Friends { get; set; }
         public ICollection<Episode> Episodes { get; set; }
 
 

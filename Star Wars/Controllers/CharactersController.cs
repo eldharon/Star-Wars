@@ -1,5 +1,6 @@
 ﻿using Star_Wars.DAL;
 using Star_Wars.Model;
+using Star_Wars.Repository;
 using Star_Wars.Service;
 using System;
 using System.Collections.Generic;
@@ -15,14 +16,11 @@ namespace Star_Wars.Controllers
 {
     public class CharactersController : ApiController
     {
-        //Calling the Database
-        private StarWarsContext db = new StarWarsContext();
 
         //Calling the Service layer
         private IService<Character> _character;
-
-
-
+        //nieudana próba DI        
+        //private Repository<Character> _character = new Repository<Character>();
         //implement data init? probably not a good place to do it
         //Initialize using a ctor
         public CharactersController(IService<Character> character)
@@ -43,7 +41,7 @@ namespace Star_Wars.Controllers
         public async Task<HttpResponseMessage> Get(int? id)
         {
             //Check if id is provided
-            if (id==null)
+            if (id == null)
             {
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
@@ -61,15 +59,17 @@ namespace Star_Wars.Controllers
             return new HttpRequestMessage().CreateResponse(HttpStatusCode.OK, character);
         }
 
-        // POST: api/Characters
-        // CREATE in CRUD
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="character"></param>
+        /// <returns></returns>
         public async Task<HttpResponseMessage> Post([FromBody]Character character)
         {
             //Validate parsed character
             if (ModelState.IsValid)
             {
-                db.Characters.Add(character);
-                await db.SaveChangesAsync();
+                await _character.AddAsync(character);
                 return new HttpRequestMessage().CreateResponse(HttpStatusCode.OK);
             }
             //If this line of code is reached, the validation went sideways
@@ -90,9 +90,8 @@ namespace Star_Wars.Controllers
             //Validate parsed character
             if (ModelState.IsValid)
             {
-                //ASK AWAY??? DO RESEARCH
-                db.Entry(character).State = System.Data.Entity.EntityState.Modified;
-                await db.SaveChangesAsync();
+                await _character.UpdateAsync(character, id.Value);
+                return new HttpRequestMessage().CreateResponse(HttpStatusCode.OK);
             }
 
             //If this line of code is reached, the validation went sideways
