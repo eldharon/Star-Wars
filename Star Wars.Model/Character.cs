@@ -13,18 +13,13 @@ namespace Star_Wars.Model
         public Character()
         {
             Episodes = new HashSet<Episode>();
+            Friends = new HashSet<Character>();
         }
         public int CharacterId { get; set; }
         [Required(ErrorMessage = "Please fill in the name")]
         public string Name { get; set; }
-
-        public string Planet { get; set; }
-        
-        public int? FriendId { get; set; }
-        [ForeignKey("FriendId")]
+        public string Planet { get; set; }        
         public ICollection<Character> Friends { get; set; }
         public ICollection<Episode> Episodes { get; set; }
-
-
     }
 }

@@ -4,12 +4,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Star_Wars.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class EpisodesControllerTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void GetEpisode_IDis2_true()
         {
-            Assert.IsTrue(true);
+            //Arrange
+            
+
         }
     }
 }
