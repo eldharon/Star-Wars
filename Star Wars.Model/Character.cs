@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Star_Wars.Model
 {
+    
     public class Character
     {
         public Character()

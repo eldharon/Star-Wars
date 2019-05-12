@@ -1,6 +1,11 @@
-﻿using Star_Wars.DAL;
+﻿using Carbon.Json.Converters;
+using Newtonsoft.Json;
+using Star_Wars.DAL;
 using Star_Wars.Model;
+using Star_Wars.ModelsDTO;
+using Star_Wars.Paginate;
 using Star_Wars.Repository;
+using Star_Wars.RestRoutes;
 using Star_Wars.Service;
 using System;
 using System.Collections.Generic;
@@ -8,9 +13,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web.Mvc;
+using Route = System.Web.Http.RouteAttribute;
 
 namespace Star_Wars.Controllers
 {
@@ -18,9 +25,8 @@ namespace Star_Wars.Controllers
     {
 
         //Calling the Service layer
+        private StarWarsContext context = new StarWarsContext();
         private IService<Character> _character;
-        //nieudana próba DI        
-        //private Repository<Character> _character = new Repository<Character>();
         //implement data init? probably not a good place to do it
         //Initialize using a ctor
         public CharactersController(IService<Character> character)
@@ -124,5 +130,26 @@ namespace Star_Wars.Controllers
             //When deletion was performed succesfully
             return new HttpRequestMessage().CreateResponse(HttpStatusCode.OK);
         }
+        //GET ALL CHARACTERS WITH DATA
+        [Route(CharacterRoutes.GetEverything)]
+        public List<CharacterEpisodeDTO> GetIncludeAll()
+        {
+            var source = _character.GetIncludeAsync(x => x.Episodes, y => y.Friends).ToList();
+            var result = MapForDto.MapForDTO(source);
+            return result;
+        }
+        [Route(CharacterRoutes.GetEverythingPagination)]
+        public List<CharacterEpisodeDTO> GetIncludeAllwPagination([FromUri]PagingParameterModel pagingParameterModel)
+        {
+            var input = _character.GetIncludeAsync(x => x.Episodes, y => y.Friends).ToList();
+            var result = MapForDto.MapForDTO(input);
+            if (pagingParameterModel!=null)
+            {
+                var output = Pagination.PaginateForResult(pagingParameterModel, result);
+                HttpContext.Current.Response.Headers.Add("Paging-Headers", JsonConvert.SerializeObject(output.paginationModel));
+                return output.items;
+            }
+            return result;
+        }       
     }
 }

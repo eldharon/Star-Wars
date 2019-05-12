@@ -13,7 +13,6 @@ namespace Star_Wars.DAL
     {
         public StarWarsContext() : base("StarWars_DB")
         {
-
         }
         public DbSet<Character> Characters { get; set; }
         public DbSet<Episode> Episodes { get; set; }

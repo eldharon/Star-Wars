@@ -81,7 +81,7 @@ namespace Star_Wars.Repository
 
         public void Dispose()
         {
-            _db.Dispose();
+            //_db.Dispose();
         }
     }
 }

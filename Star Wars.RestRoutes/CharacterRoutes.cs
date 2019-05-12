@@ -12,6 +12,9 @@ namespace Star_Wars.RestRoutes
         public const string UpdateCharacter = "UpdateCharacter";
         public const string DeleteCharacter = "DeleteCharacter";
         public const string EditCharacter = "EditCharacter";
+        public const string GetEverything = "GetEverything";
+        public const string GetEverythingPagination = "GetEverythingPagination";
+
         //tutaj dodać ewentualne kolejne ścieżki
     }
 }

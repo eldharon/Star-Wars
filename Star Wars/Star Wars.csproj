@@ -282,6 +282,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ModelsDTO\CharacterEpisodeDTO.cs" />
+    <Compile Include="ModelsDTO\MapForDto.cs" />
+    <Compile Include="Paginate\Pagination.cs" />
+    <Compile Include="Paginate\PaginationModel.cs" />
+    <Compile Include="Paginate\PaginationResultSetModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -380,6 +385,10 @@
     <ProjectReference Include="..\Star Wars.Repository\Star Wars.Repository.csproj">
       <Project>{F7CA7D65-88D1-441B-BB33-17DCD2D1D879}</Project>
       <Name>Star Wars.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Star Wars.RestRoutes\Star Wars.RestRoutes.csproj">
+      <Project>{EAD7F98A-E952-4B70-BB0F-5EFD63A3C954}</Project>
+      <Name>Star Wars.RestRoutes</Name>
     </ProjectReference>
     <ProjectReference Include="..\Star Wars.Service\Star Wars.Service.csproj">
       <Project>{645BE049-9C62-443E-9022-C07F22F64674}</Project>

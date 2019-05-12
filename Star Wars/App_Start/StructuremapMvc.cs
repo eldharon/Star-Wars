@@ -40,9 +40,6 @@ namespace Star_Wars.App_Start {
 		
 		#region Public Methods and Operators
 		
-		public static void End() {
-            StructureMapDependencyScope.Dispose();
-        }
 		
         public static void Start() {
             IContainer container = IoC.Initialize();
